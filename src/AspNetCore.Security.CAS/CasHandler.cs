@@ -52,7 +52,7 @@ namespace AspNetCore.Security.CAS
                 return HandleRequestResult.Fail("Missing CAS ticket.");
             }
             
-            var casService = Uri.EscapeDataString(BuildReturnTo(state));
+            var casService = BuildReturnTo(state);
             var authTicket = await Options.TicketValidator.ValidateTicket(Context, properties, Scheme, Options, casTicket, casService);
             if (authTicket == null)
             {
